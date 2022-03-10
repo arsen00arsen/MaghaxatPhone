@@ -5,6 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
 import { AntDesign } from '@expo/vector-icons';
+import UploadImage from '../components/UploadImage';
+
 const SignUpScreen = ({ navigation }) => {
     const [data, setData] = React.useState({
         name: '',
@@ -15,6 +17,8 @@ const SignUpScreen = ({ navigation }) => {
         // isValidPassword: true,
     });
 
+
+   
     const nameInputChange = (val) => {
         if (val.trim().length >= 4) {
 
@@ -34,23 +38,23 @@ const SignUpScreen = ({ navigation }) => {
         }
     }
 
-    const lastNameInputChange = (val) =>{
+    const lastNameInputChange = (val) => {
         if (val.trim().length >= 4) {
 
             setData({
                 ...data,
                 lastName: val,
-               
+
             });
         } else {
             setData({
                 ...data,
                 lastName: val,
-               
+
             });
         }
     }
-  
+
 
     const updateSecureTextEntry = () => {
         setData({
@@ -67,7 +71,7 @@ const SignUpScreen = ({ navigation }) => {
             <StatusBar backgroundColor='#009387' barStyle="light-content" />
             <View style={styles.content}>
                 <View style={styles.headerWidthButton}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
                         <AntDesign name="left" size={30} color="white" />
                     </TouchableOpacity>
                     <View style={styles.titlecontent}>
@@ -76,6 +80,7 @@ const SignUpScreen = ({ navigation }) => {
                     </View>
                     <View></View>
                 </View>
+                <UploadImage />
                 <View>
                     <View style={styles.action}>
                         <Text style={styles.inputHeader}>First Name</Text>
@@ -85,7 +90,7 @@ const SignUpScreen = ({ navigation }) => {
                             style={styles.textInput}
                             autoCapitalize="none"
                             onChangeText={(val) => nameInputChange(val)}
-                           
+
                         />
                     </View>
                     <View style={styles.action}>
@@ -96,17 +101,19 @@ const SignUpScreen = ({ navigation }) => {
                             style={styles.textInput}
                             autoCapitalize="none"
                             onChangeText={(val) => lastNameInputChange(val)}
-                           
                         />
                     </View>
+                  
                 </View>
                 <View>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUpScreen')}>
-                    <Text style={styles.textSign}>Next</Text>
-                    <AntDesign name="arrowright" size={20} color="white" style={styles.arrowIcon} />
+                        <View></View>
+                        <Text style={styles.textSign}>Next</Text>
+                        <AntDesign name="arrowright" size={20} color="white" style={styles.arrowIcon} />
                     </TouchableOpacity>
                 </View>
             </View>
+            
         </LinearGradient>
     );
 };
@@ -124,16 +131,16 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
-        height: "70%"
+        height: "70%",
+        paddingHorizontal: 20
     },
-    headerWidthButton:{
+    headerWidthButton: {
         display: "flex",
         width: "100%",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingHorizontal: 20
-
+        marginBottom:30
     },
     titlecontent: {
         display: "flex",
@@ -160,7 +167,7 @@ const styles = StyleSheet.create({
         width: 237,
         height: 57,
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
     },
     arrowIcon: {
         marginRight: 20
@@ -214,5 +221,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         width: "100%"
-    }
+    },
+
+
 });
