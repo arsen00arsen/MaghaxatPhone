@@ -6,6 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';
 import { AntDesign } from '@expo/vector-icons';
 import UploadImage from '../components/UploadImage';
+import BirthDate from '../components/BirthDate';
 
 const SignUpScreen = ({ navigation }) => {
     const [data, setData] = React.useState({
@@ -103,10 +104,10 @@ const SignUpScreen = ({ navigation }) => {
                             onChangeText={(val) => lastNameInputChange(val)}
                         />
                     </View>
-                  
+               
                 </View>
                 <View>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUpScreen')}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AccountInfoScreen')}>
                         <View></View>
                         <Text style={styles.textSign}>Next</Text>
                         <AntDesign name="arrowright" size={20} color="white" style={styles.arrowIcon} />
