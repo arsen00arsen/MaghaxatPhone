@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import RNPickerSelect from 'react-native-picker-select';
 
 
-const IneterestingAreaScreen = ({ navigation }) => {
+const PriorityPageScreen = ({ navigation }) => {
     return (
         <LinearGradient
             colors={["#D6AB6F", '#D6AB6F', '#B8B8B8', '#B8B8B8']}
@@ -19,24 +19,23 @@ const IneterestingAreaScreen = ({ navigation }) => {
                         <AntDesign name="left" size={30} color="white" />
                     </TouchableOpacity>
                     <View style={styles.titlecontent}>
-                        <Text style={styles.text}>Your 3 most</Text>
-                        <Text style={styles.text}>interesting areas</Text>
+                        <Text style={styles.text}>Choose</Text>
+                        <Text style={styles.text}>priority</Text>
                     </View>
                     <View></View>
                 </View>
-
-                <Animatable.Image
-                    animation="fadeInUpBig"
-                    duraton="1500"
-                    source={require('../assets/interesting.png')}
-                    style={styles.logo}
-                    resizeMode="stretch"
-                />
                 <View>
+                    <Animatable.Image
+                        animation="fadeInUpBig"
+                        duraton="1500"
+                        source={require('../../assets/priority.png')}
+                        style={styles.logo}
+                        resizeMode="stretch"
+                    />
                     <View style={styles.action}>
-                        <Text style={styles.inputHeader}>Interest #1</Text>
+                        <Text style={styles.inputHeader}>Type</Text>
                         <RNPickerSelect
-                            placeholder={{ label: "", value: "Interest #1" }}
+                            placeholder={{ label: "", value: "Type" }}
                             style={{
                                 ...pickerSelectStyles,
                                 iconContainer: {
@@ -46,7 +45,7 @@ const IneterestingAreaScreen = ({ navigation }) => {
                             }}
                             onValueChange={(value) => console.log(value)}
                             items={[
-                                { label: 'It', value: 'it' },
+                                { label: 'Indigent', value: 'indigent' },
                                 { label: 'Footbole', value: 'footbole' },
 
                             ]}
@@ -56,9 +55,9 @@ const IneterestingAreaScreen = ({ navigation }) => {
                         />
                     </View>
                     <View style={styles.action}>
-                        <Text style={styles.inputHeader}>Interest #2</Text>
+                        <Text style={styles.inputHeader}>Type Indigent</Text>
                         <RNPickerSelect
-                            placeholder={{ label: "", value: "Interest #2" }}
+                            placeholder={{ label: "", value: "Type Indigent" }}
                             style={{
                                 ...pickerSelectStyles,
                                 iconContainer: {
@@ -68,30 +67,8 @@ const IneterestingAreaScreen = ({ navigation }) => {
                             }}
                             onValueChange={(value) => console.log(value)}
                             items={[
-                                { label: 'Marketing', value: 'marketing' },
+                                { label: 'Talent', value: 'talent' },
                                 { label: 'Advertising', value: 'advertising' },
-
-                            ]}
-                            Icon={() => {
-                                return <AntDesign name="down" size={20} color="#909090" style={styles.icon} />;
-                            }}
-                        />
-                    </View>
-                    <View style={styles.action}>
-                        <Text style={styles.inputHeader}>Interest #3</Text>
-                        <RNPickerSelect
-                            placeholder={{ label: "", value: "Interest #3" }}
-                            style={{
-                                ...pickerSelectStyles,
-                                iconContainer: {
-                                    top: 10,
-                                    right: 12,
-                                },
-                            }}
-                            onValueChange={(value) => console.log(value)}
-                            items={[
-                                { label: 'Education', value: 'education' },
-                                { label: 'Training', value: 'training' },
 
                             ]}
                             Icon={() => {
@@ -101,7 +78,7 @@ const IneterestingAreaScreen = ({ navigation }) => {
                     </View>
                 </View>
                 <View>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('PriorityPageScreen')}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreatePasswordScreen')}>
                         <View></View>
                         <Text style={styles.textSign}>Next</Text>
                         <AntDesign name="arrowright" size={20} color="white" style={styles.arrowIcon} />
@@ -116,7 +93,7 @@ const IneterestingAreaScreen = ({ navigation }) => {
     );
 };
 
-export default IneterestingAreaScreen;
+export default PriorityPageScreen;
 
 const styles = StyleSheet.create({
 
@@ -145,8 +122,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     logo: {
-        width: 160,
-        height: 191,
+        width: 245,
+        height: 200,
     },
     icon: {
         paddingLeft: 10,
@@ -184,11 +161,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2',
-        backgroundColor: "white",
+        backgroundColor: "#FFFFFF",
         width: 250,
         height: 60,
         borderRadius: 4,
-        alignItems: "start"
+        alignItems: "flex-start"
     },
     inputHeader: {
         fontSize: 12,

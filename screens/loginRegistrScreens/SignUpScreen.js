@@ -1,16 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, StatusBar, TouchableOpacity, TextInput } from 'react-native';
+import { View, StyleSheet, Text, Image, Dimensions, StatusBar, TouchableOpacity, TextInput } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Animatable from 'react-native-animatable';
+import Feather from 'react-native-vector-icons/Feather';
 import { AntDesign } from '@expo/vector-icons';
-import RNPickerSelect from 'react-native-picker-select';
+import UploadImage from '../../components/UploadImage';
+// import BirthDate from '../../components/BirthDate';
 
-
-
-const AccountInfoScreen = ({ navigation }) => {
+const SignUpScreen = ({ navigation }) => {
     const [data, setData] = React.useState({
-        email: '',
-        phone: '',
+        name: '',
+        lastName: '',
         check_textInputChange: false,
         secureTextEntry: true,
         isValidUser: true,
@@ -18,38 +19,38 @@ const AccountInfoScreen = ({ navigation }) => {
     });
 
 
-
-    const emailInputChange = (val) => {
+   
+    const nameInputChange = (val) => {
         if (val.trim().length >= 4) {
 
             setData({
                 ...data,
-                email: val,
+                name: val,
                 check_textInputChange: true,
                 isValidUser: true
             });
         } else {
             setData({
                 ...data,
-                email: val,
+                name: val,
                 check_textInputChange: false,
                 isValidUser: false
             });
         }
     }
 
-    const phoneInputChange = (val) => {
+    const lastNameInputChange = (val) => {
         if (val.trim().length >= 4) {
 
             setData({
                 ...data,
-                phone: val,
+                lastName: val,
 
             });
         } else {
             setData({
                 ...data,
-                phone: val,
+                lastName: val,
 
             });
         }
@@ -75,78 +76,50 @@ const AccountInfoScreen = ({ navigation }) => {
                         <AntDesign name="left" size={30} color="white" />
                     </TouchableOpacity>
                     <View style={styles.titlecontent}>
-                        <Text style={styles.text}>Account</Text>
-                        <Text style={styles.text}>Information</Text>
+                        <Text style={styles.text}>Create Your</Text>
+                        <Text style={styles.text}>Profile</Text>
                     </View>
                     <View></View>
                 </View>
-                <Animatable.Image
-                    animation="fadeInUpBig"
-                    duraton="1500"
-                    source={require('../assets/account.png')}
-                    style={styles.logo}
-                    resizeMode="stretch"
-                />
+                <UploadImage />
                 <View>
-                <View style={styles.action}>
-                        <Text style={styles.inputHeader}>Gender</Text>
-                        <RNPickerSelect
-                        placeholder={{ label: "", value: "Gender" }}
-                           style={{
-                            ...pickerSelectStyles,
-                            iconContainer: {
-                              top: 10,
-                              right: 12,
-                            },
-                          }}
-                            onValueChange={(value) => console.log(value)}
-                            items={[
-                                { label: 'Male', value: 'male' },
-                                { label: 'Female', value: 'female' },
-
-                            ]}
-                            Icon={() => {
-                                return <AntDesign name="down" size={20} color="#909090"  style={styles.icon}/>;
-                              }}
-                        />
-                    </View>
                     <View style={styles.action}>
-                        <Text style={styles.inputHeader}>Email</Text>
+                        <Text style={styles.inputHeader}>First Name</Text>
                         <TextInput
                             // placeholder="Your Email"
                             placeholderTextColor="#666666"
                             style={styles.textInput}
                             autoCapitalize="none"
-                            onChangeText={(val) => emailInputChange(val)}
+                            onChangeText={(val) => nameInputChange(val)}
 
                         />
                     </View>
                     <View style={styles.action}>
-                        <Text style={styles.inputHeader}>Phone number</Text>
+                        <Text style={styles.inputHeader}>Last Name</Text>
                         <TextInput
                             // placeholder="Your Email"
                             placeholderTextColor="#666666"
                             style={styles.textInput}
                             autoCapitalize="none"
-                            onChangeText={(val) => phoneInputChange(val)}
+                            onChangeText={(val) => lastNameInputChange(val)}
                         />
                     </View>
-                   
+               
                 </View>
                 <View>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('IneterestingAreaScreen')}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AccountInfoScreen')}>
                         <View></View>
                         <Text style={styles.textSign}>Next</Text>
                         <AntDesign name="arrowright" size={20} color="white" style={styles.arrowIcon} />
                     </TouchableOpacity>
                 </View>
             </View>
-
+            
         </LinearGradient>
     );
 };
 
-export default AccountInfoScreen;
+export default SignUpScreen;
 
 const styles = StyleSheet.create({
 
@@ -168,7 +141,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        // marginBottom:30
+        marginBottom:30
     },
     titlecontent: {
         display: "flex",
@@ -176,13 +149,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     logo: {
-        width: 228,
-        height: 160,
-        marginVertical: 20
-    },
-    icon: {
-        paddingLeft: 10,
-        bottom: 15
+        width: "100%",
+        height: 57,
     },
     text: {
         color: 'white',
@@ -221,11 +189,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2',
-        backgroundColor: "white",
+        backgroundColor: "#FFFFFF",
         width: 250,
         height: 60,
         borderRadius: 4,
-        alignItems: "start"
+        alignItems: "flex-start"
     },
     textInput: {
         flex: 1,
@@ -258,20 +226,3 @@ const styles = StyleSheet.create({
 
 
 });
-
-const pickerSelectStyles = StyleSheet.create({
-    inputIOS: {
-      fontSize: 16,
-      paddingVertical: 12,
-      paddingHorizontal: 10,
-      color: 'black',
-      paddingRight: 30, // to ensure the text is never behind the icon
-    },
-    inputAndroid: {
-      fontSize: 16,
-      paddingHorizontal: 10,
-      paddingVertical: 8,
-      color: 'black',
-      paddingRight: 30, // to ensure the text is never behind the icon
-    },
-  });

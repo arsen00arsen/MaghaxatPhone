@@ -4,9 +4,11 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 import { AntDesign } from '@expo/vector-icons';
 import RNPickerSelect from 'react-native-picker-select';
+// import CountrySelect from '../components/CountrySelect';
 
 
-const PriorityPageScreen = ({ navigation }) => {
+const LocationPageScreen = ({ navigation }) => {
+  
     return (
         <LinearGradient
             colors={["#D6AB6F", '#D6AB6F', '#B8B8B8', '#B8B8B8']}
@@ -24,40 +26,21 @@ const PriorityPageScreen = ({ navigation }) => {
                     </View>
                     <View></View>
                 </View>
-                <View>
+                <View style={styles.inputSIcon}>
                     <Animatable.Image
                         animation="fadeInUpBig"
                         duraton="1500"
-                        source={require('../assets/priority.png')}
+                        source={require('../../assets/Location.png')}
                         style={styles.logo}
                         resizeMode="stretch"
                     />
                     <View style={styles.action}>
-                        <Text style={styles.inputHeader}>Type</Text>
-                        <RNPickerSelect
-                            placeholder={{ label: "", value: "Type" }}
-                            style={{
-                                ...pickerSelectStyles,
-                                iconContainer: {
-                                    top: 10,
-                                    right: 12,
-                                },
-                            }}
-                            onValueChange={(value) => console.log(value)}
-                            items={[
-                                { label: 'Indigent', value: 'indigent' },
-                                { label: 'Footbole', value: 'footbole' },
-
-                            ]}
-                            Icon={() => {
-                                return <AntDesign name="down" size={20} color="#909090" style={styles.icon} />;
-                            }}
-                        />
+                      
+                        {/* <CountrySelect /> */}
                     </View>
-                    <View style={styles.action}>
+                    {/* <View style={styles.action}>
                         <Text style={styles.inputHeader}>Type Indigent</Text>
                         <RNPickerSelect
-                            placeholder={{ label: "", value: "Type Indigent" }}
                             style={{
                                 ...pickerSelectStyles,
                                 iconContainer: {
@@ -75,7 +58,7 @@ const PriorityPageScreen = ({ navigation }) => {
                                 return <AntDesign name="down" size={20} color="#909090" style={styles.icon} />;
                             }}
                         />
-                    </View>
+                    </View> */}
                 </View>
                 <View>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreatePasswordScreen')}>
@@ -93,7 +76,7 @@ const PriorityPageScreen = ({ navigation }) => {
     );
 };
 
-export default PriorityPageScreen;
+export default LocationPageScreen;
 
 const styles = StyleSheet.create({
 
@@ -116,14 +99,18 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center"
     },
+    inputSIcon: {
+        display: "flex",
+        alignItems: "center"
+    },
     titlecontent: {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
     },
     logo: {
-        width: 245,
-        height: 200,
+        width: 193,
+        height: 160,
     },
     icon: {
         paddingLeft: 10,
@@ -161,11 +148,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2',
-        backgroundColor: "white",
+        backgroundColor: "#FFFFFF",
         width: 250,
         height: 60,
         borderRadius: 4,
-        alignItems: "start"
+        alignItems: "flex-start"
     },
     inputHeader: {
         fontSize: 12,

@@ -4,11 +4,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 import { AntDesign } from '@expo/vector-icons';
 import RNPickerSelect from 'react-native-picker-select';
-// import CountrySelect from '../components/CountrySelect';
 
 
-const LocationPageScreen = ({ navigation }) => {
-  
+const IneterestingAreaScreen = ({ navigation }) => {
     return (
         <LinearGradient
             colors={["#D6AB6F", '#D6AB6F', '#B8B8B8', '#B8B8B8']}
@@ -21,26 +19,24 @@ const LocationPageScreen = ({ navigation }) => {
                         <AntDesign name="left" size={30} color="white" />
                     </TouchableOpacity>
                     <View style={styles.titlecontent}>
-                        <Text style={styles.text}>Choose</Text>
-                        <Text style={styles.text}>priority</Text>
+                        <Text style={styles.text}>Your 3 most</Text>
+                        <Text style={styles.text}>interesting areas</Text>
                     </View>
                     <View></View>
                 </View>
-                <View style={styles.inputSIcon}>
-                    <Animatable.Image
-                        animation="fadeInUpBig"
-                        duraton="1500"
-                        source={require('../assets/Location.png')}
-                        style={styles.logo}
-                        resizeMode="stretch"
-                    />
+
+                <Animatable.Image
+                    animation="fadeInUpBig"
+                    duraton="1500"
+                    source={require('../../assets/interesting.png')}
+                    style={styles.logo}
+                    resizeMode="stretch"
+                />
+                <View>
                     <View style={styles.action}>
-                      
-                        {/* <CountrySelect /> */}
-                    </View>
-                    {/* <View style={styles.action}>
-                        <Text style={styles.inputHeader}>Type Indigent</Text>
+                        <Text style={styles.inputHeader}>Interest #1</Text>
                         <RNPickerSelect
+                            placeholder={{ label: "", value: "Interest #1" }}
                             style={{
                                 ...pickerSelectStyles,
                                 iconContainer: {
@@ -50,7 +46,29 @@ const LocationPageScreen = ({ navigation }) => {
                             }}
                             onValueChange={(value) => console.log(value)}
                             items={[
-                                { label: 'Talent', value: 'talent' },
+                                { label: 'It', value: 'it' },
+                                { label: 'Footbole', value: 'footbole' },
+
+                            ]}
+                            Icon={() => {
+                                return <AntDesign name="down" size={20} color="#909090" style={styles.icon} />;
+                            }}
+                        />
+                    </View>
+                    <View style={styles.action}>
+                        <Text style={styles.inputHeader}>Interest #2</Text>
+                        <RNPickerSelect
+                            placeholder={{ label: "", value: "Interest #2" }}
+                            style={{
+                                ...pickerSelectStyles,
+                                iconContainer: {
+                                    top: 10,
+                                    right: 12,
+                                },
+                            }}
+                            onValueChange={(value) => console.log(value)}
+                            items={[
+                                { label: 'Marketing', value: 'marketing' },
                                 { label: 'Advertising', value: 'advertising' },
 
                             ]}
@@ -58,10 +76,32 @@ const LocationPageScreen = ({ navigation }) => {
                                 return <AntDesign name="down" size={20} color="#909090" style={styles.icon} />;
                             }}
                         />
-                    </View> */}
+                    </View>
+                    <View style={styles.action}>
+                        <Text style={styles.inputHeader}>Interest #3</Text>
+                        <RNPickerSelect
+                            placeholder={{ label: "", value: "Interest #3" }}
+                            style={{
+                                ...pickerSelectStyles,
+                                iconContainer: {
+                                    top: 10,
+                                    right: 12,
+                                },
+                            }}
+                            onValueChange={(value) => console.log(value)}
+                            items={[
+                                { label: 'Education', value: 'education' },
+                                { label: 'Training', value: 'training' },
+
+                            ]}
+                            Icon={() => {
+                                return <AntDesign name="down" size={20} color="#909090" style={styles.icon} />;
+                            }}
+                        />
+                    </View>
                 </View>
                 <View>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreatePasswordScreen')}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('PriorityPageScreen')}>
                         <View></View>
                         <Text style={styles.textSign}>Next</Text>
                         <AntDesign name="arrowright" size={20} color="white" style={styles.arrowIcon} />
@@ -76,7 +116,7 @@ const LocationPageScreen = ({ navigation }) => {
     );
 };
 
-export default LocationPageScreen;
+export default IneterestingAreaScreen;
 
 const styles = StyleSheet.create({
 
@@ -99,18 +139,14 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center"
     },
-    inputSIcon: {
-        display: "flex",
-        alignItems: "center"
-    },
     titlecontent: {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
     },
     logo: {
-        width: 193,
-        height: 160,
+        width: 160,
+        height: 191,
     },
     icon: {
         paddingLeft: 10,
@@ -148,11 +184,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2',
-        backgroundColor: "white",
+        backgroundColor: "#FFFFFF",
         width: 250,
         height: 60,
         borderRadius: 4,
-        alignItems: "start"
+        alignItems: "flex-start"
     },
     inputHeader: {
         fontSize: 12,

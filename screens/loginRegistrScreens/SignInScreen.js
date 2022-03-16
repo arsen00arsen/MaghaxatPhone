@@ -105,7 +105,7 @@ const SignInScreen = ({ navigation }) => {
                 <Animatable.Image
                     animation="fadeInUpBig"
                     duraton="1500"
-                    source={require('../assets/welcome.png')}
+                    source={require('../../assets/welcome.png')}
                     style={styles.logo}
                     resizeMode="stretch"
                 />
@@ -237,11 +237,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2',
-        backgroundColor: "white",
+        backgroundColor: "#FFFFFF",
         width: 250,
         height: 60,
         borderRadius: 4,
-        alignItems: "start"
+        alignItems: "flex-start"
     },
     textInput: {
         flex: 1,
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
         height: 57,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: "30%"
+        borderRadius: 30
     },
     eyeIcon: {
         paddingRight: 20,

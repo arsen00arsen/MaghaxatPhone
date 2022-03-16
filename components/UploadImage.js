@@ -1,51 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import { Image, View, Platform, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import { AntDesign } from '@expo/vector-icons';
 
+
 export default function UploadImage() {
- const [image, setImage] = useState(null);
- const addImage=()=>{};
+    let [selectedImage, setSelectedImage] = React.useState(null);
 
- return (
-<View style={imageUploaderStyles.container}>
-               {
-                   image  &&<Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-               }
+    let openImagePickerAsync = async () => {
+        let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
-<View style={imageUploaderStyles.uploadBtnContainer}>
-<TouchableOpacity onPress={addImage} style={imageUploaderStyles.uploadBtn} >
-<AntDesign name="camera" size={20} color="white" />
-</TouchableOpacity>
-</View>
+        if (permissionResult.granted === false) {
+            alert('Permission to access camera roll is required!');
+            return;
+        }
 
+        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+        if (pickerResult.cancelled === true) {
+            return;
+        }
 
-</View>
+        setSelectedImage({ localUri: pickerResult.uri });
+    };
 
- );
+    if (selectedImage !== null) {
+        return (
+            <View style={styles.container}>
+                <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
+            </View>
+        );
+    }
+
+    return (
+        <View style={styles.container}>
+
+            <View style={styles.uploadBtnContainer}>
+                <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+                    <AntDesign name="camera" size={20} color="white" />
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
 }
 
-const imageUploaderStyles=StyleSheet.create({
-   container:{
-       elevation:2,
-       height:180,
-       width:180,
-       backgroundColor:'#efefef',
-       position:'relative',
-       borderRadius:999,
-       overflow:'hidden',
-   },
-   uploadBtnContainer:{
-       opacity:0.7,
-       position:'absolute',
-       right:0,
-       bottom:0,
-       backgroundColor:'#88673A',
-       width:'100%',
-       height:'25%',
-   },
-   uploadBtn:{
-       display:'flex',
-       alignItems:"center",
-       justifyContent:'center'
-   }
-})
+const styles = StyleSheet.create({
+    container: {
+        elevation: 2,
+        height: 180,
+        width: 180,
+        backgroundColor: '#efefef',
+        position: 'relative',
+        borderRadius: 999,
+        overflow: 'hidden',
+    },
+    logo: {
+        width: 305,
+        height: 159,
+        marginBottom: 20,
+    },
+    instructions: {
+        color: '#888',
+        fontSize: 18,
+        marginHorizontal: 15,
+        marginBottom: 10,
+    },
+    button: {
+        display: 'flex',
+        alignItems: "center",
+        justifyContent: 'center'
+    },
+
+    thumbnail: {
+        width: 200,
+        height: 200,
+        resizeMode: 'contain',
+    },
+    uploadBtnContainer: {
+        opacity: 0.7,
+        position: 'absolute',
+        right: 0,
+        bottom: 0,
+        backgroundColor: '#88673A',
+        width: '100%',
+        height: '25%',
+    },
+});

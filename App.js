@@ -6,28 +6,31 @@
  * @flow
  */
 
- import React from 'react';
+import React from 'react';
 
-import {NavigationContainer} from '@react-navigation/native';
-import RootStackScreen from './screens/RootStackScreen';
- 
- 
- const App = () => {
+import { NavigationContainer } from '@react-navigation/native';
+// import RootStackScreen from './screens/loginRegistrScreens/RootStackScreen';
+import MainTabScreen from "./screens/navBarScreens/MainTabScreen";
+// import  DrawerContent from "./screens/navBarScreens/DrawerContent";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-   return (
-     <NavigationContainer >
-      <RootStackScreen/>
-         {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-           <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
-           <Drawer.Screen name="SupportScreen" component={SupportScreen} />
+
+
+const Drawer = createDrawerNavigator();
+const App = () => {
+
+  return (
+    <NavigationContainer >
+      {/* <RootStackScreen/> */}
+      <Drawer.Navigator>
+        <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
+        {/* <Drawer.Screen name="SupportScreen" component={SupportScreen} />
            <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
-           <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} />
-         </Drawer.Navigator>
-       */}
-       
-     </NavigationContainer>
-   );
- }
- 
- export default App;
- 
+           <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} /> */}
+      </Drawer.Navigator>
+
+    </NavigationContainer>
+  );
+}
+
+export default App;
