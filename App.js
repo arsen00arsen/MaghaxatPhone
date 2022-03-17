@@ -13,7 +13,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import MainTabScreen from "./screens/navBarScreens/MainTabScreen";
 // import  DrawerContent from "./screens/navBarScreens/DrawerContent";
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
+import BookmarkScreen from "./screens/navBarScreens/BookmarkScreen";
+import ChatScreen from './components/ChatScreen';
 
 
 const Drawer = createDrawerNavigator();
@@ -22,11 +23,11 @@ const App = () => {
   return (
     <NavigationContainer >
       {/* <RootStackScreen/> */}
-      <Drawer.Navigator>
+      <Drawer.Navigator screenOptions={{
+      headerShown: false
+    }}>
         <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
-        {/* <Drawer.Screen name="SupportScreen" component={SupportScreen} />
-           <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
-           <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} /> */}
+        <Drawer.Screen name="ChatScreen" component={ChatScreen} />
       </Drawer.Navigator>
 
     </NavigationContainer>
@@ -34,3 +35,5 @@ const App = () => {
 }
 
 export default App;
+
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, Dimensions, StatusBar, TouchableOpacity, TextInput } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 import Feather from 'react-native-vector-icons/Feather';

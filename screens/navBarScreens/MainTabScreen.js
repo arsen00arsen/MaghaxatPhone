@@ -2,14 +2,17 @@ import React from 'react';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+
 import HeaderChatSearch from "../../components/HeaderChatSearch"
 import HomeScreen from './HomeScreen';
 import DetailsScreen from './DetailsScreen';
 import ExploreScreen from './ExploreScreen';
 import ProfileScreen from './ProfileScreen';
-
+import AccountScreen from './AccountScreen';
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 
@@ -27,7 +30,7 @@ const MainTabScreen = () => (
                 // tabBarLabel: 'Home',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
-                    <Icon name="ios-home" color={color} size={26} />
+                    <MaterialCommunityIcons name="home-outline" size={24} color={color} />
                 ),
             }}
         />
@@ -38,7 +41,7 @@ const MainTabScreen = () => (
                 tabBarLabel: 'Updates',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
-                    <Icon name="ios-notifications" color={color} size={26} />
+                    <MaterialIcons name="perm-media" size={24}color={color} />
                 ),
             }}
         />
@@ -49,7 +52,7 @@ const MainTabScreen = () => (
                 tabBarLabel: 'Profile',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
-                    <Icon name="ios-person" color={color} size={26} />
+                    <FontAwesome5 name="hand-holding" size={24} color={color} />
                 ),
             }}
         />
@@ -59,9 +62,19 @@ const MainTabScreen = () => (
             options={{
                 tabBarLabel: 'Explore',
                 tabBarColor: '#C6B7A2',
-               
                 tabBarIcon: ({ color }) => (
-                    <Icon name="ios-aperture" color={color} size={26} />
+                    <MaterialCommunityIcons name="account-group" size={24} color={color} />
+                ),
+            }}
+        />
+        <Tab.Screen
+            name="AccountScreen"
+            component={AccountScreen}
+            options={{
+                tabBarLabel: 'Account',
+                tabBarColor: '#C6B7A2',
+                tabBarIcon: ({ color }) => (
+                    <MaterialCommunityIcons name="account-circle" size={24} color={color} />
                 ),
             }}
         />
@@ -73,7 +86,6 @@ export default MainTabScreen;
 const HomeStackScreen = ({ navigation }) => (
     <HomeStack.Navigator >
         <HomeStack.Screen name="Home" component={HomeScreen} options={{
-            
             title:   <HeaderChatSearch />
             
         }} />
