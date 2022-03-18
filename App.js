@@ -14,7 +14,7 @@ import MainTabScreen from "./screens/navBarScreens/MainTabScreen";
 // import  DrawerContent from "./screens/navBarScreens/DrawerContent";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import BookmarkScreen from "./screens/navBarScreens/BookmarkScreen";
-import ChatScreen from './components/ChatScreen';
+import ChatScreen from './screens/navBarScreens/ChatScreen';
 
 
 const Drawer = createDrawerNavigator();

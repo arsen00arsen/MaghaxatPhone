@@ -6,7 +6,7 @@ import { EvilIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 const BadgedIcon = withBadge(2)(Icon);
 
-const HeaderChatSearch = () => {
+const HeaderBackSearch = () => {
     const navigation = useNavigation();
 
     return (
@@ -17,9 +17,8 @@ const HeaderChatSearch = () => {
                 end={{ x: 1, y: 1 }}
                 locations={[0.0, 0.9]}
                 colors={['#D1C7B9', '#D2C8B9']}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ChatScreen')}>
-
-                    <Text >M</Text>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
+                    <Text >{`<`}</Text>
 
                 </TouchableOpacity>
 
@@ -43,7 +42,7 @@ const HeaderChatSearch = () => {
     );
 };
 
-export default HeaderChatSearch;
+export default HeaderBackSearch;
 
 const styles = StyleSheet.create({
     container: {
@@ -83,8 +82,6 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%"
     }
-
-
 });
 
 

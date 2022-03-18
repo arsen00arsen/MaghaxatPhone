@@ -4,6 +4,7 @@ import { useTheme } from '@react-navigation/native';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import PostsComponent from '../../components/PostsComponent';
+import HeaderChatSearch from '../../components/HeaderChatSearch';
 
 
 
@@ -73,6 +74,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#009387' barStyle={theme.dark ? "light-content" : "dark-content"} />
+      <HeaderChatSearch />
       <ScrollView>
         <View style={styles.lastUsersContainerBody}>
           <View style={styles.lastUsersContainer}>

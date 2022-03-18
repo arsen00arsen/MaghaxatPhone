@@ -9,7 +9,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 import HeaderChatSearch from "../../components/HeaderChatSearch"
 import HomeScreen from './HomeScreen';
-import DetailsScreen from './DetailsScreen';
+import MediaScreen from './MediaScreen';
 import ExploreScreen from './ExploreScreen';
 import ProfileScreen from './ProfileScreen';
 import AccountScreen from './AccountScreen';
@@ -25,7 +25,7 @@ const MainTabScreen = () => (
     >
         <Tab.Screen
             name="Home"
-            component={HomeStackScreen}
+            component={HomeScreen}
             options={{
                 // tabBarLabel: 'Home',
                 tabBarColor: '#C6B7A2',
@@ -35,10 +35,10 @@ const MainTabScreen = () => (
             }}
         />
         <Tab.Screen
-            name="Notifications"
-            component={DetailsStackScreen}
+            name="Media"
+            component={MediaScreen}
             options={{
-                tabBarLabel: 'Updates',
+                // tabBarLabel: 'Updates',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
                     <MaterialIcons name="perm-media" size={24}color={color} />
@@ -83,31 +83,31 @@ const MainTabScreen = () => (
 
 export default MainTabScreen;
 
-const HomeStackScreen = ({ navigation }) => (
-    <HomeStack.Navigator >
-        <HomeStack.Screen name="Home" component={HomeScreen} options={{
-            title:   <HeaderChatSearch />
+// const HomeStackScreen = ({ navigation }) => (
+//     <HomeStack.Navigator >
+//         <HomeStack.Screen name="Home" component={HomeScreen} options={{
+//             // title:   <HeaderChatSearch />
             
-        }} />
-    </HomeStack.Navigator>
-);
+//         }} />
+//     </HomeStack.Navigator>
+// );
 
-const DetailsStackScreen = ({ navigation }) => (
-    <DetailsStack.Navigator screenOptions={{
-        headerStyle: {
-            backgroundColor: '#fff',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWeight: 'bold'
-        }
-    }}>
-        <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
-             title: '......................',
+// const DetailsStackScreen = ({ navigation }) => (
+//     <DetailsStack.Navigator screenOptions={{
+//         headerStyle: {
+//             backgroundColor: '#fff',
+//         },
+//         headerTintColor: '#fff',
+//         headerTitleStyle: {
+//             fontWeight: 'bold'
+//         }
+//     }}>
+//         <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
+//              title: '......................',
            
-        }} />
-    </DetailsStack.Navigator>
-);
+//         }} />
+//     </DetailsStack.Navigator>
+// );
 
 // headerLeft: () => (
 //     <Icon.Button name="ios-menu" size={25} backgroundColor="#009387" onPress={() => navigation.openDrawer()}></Icon.Button>
