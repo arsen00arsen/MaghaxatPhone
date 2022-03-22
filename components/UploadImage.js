@@ -2,9 +2,10 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { AntDesign } from '@expo/vector-icons';
+import { useLinkProps } from '@react-navigation/native';
 
 
-export default function UploadImage() {
+export default function UploadImage(props) {
     let [selectedImage, setSelectedImage] = React.useState(null);
 
     let openImagePickerAsync = async () => {
@@ -32,7 +33,7 @@ export default function UploadImage() {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={{elevation: 2, backgroundColor: "#efefef", position: "relative", borderRadius: 999, overflow: 'hidden', width: props.width, height: props.height  }}>
 
             <View style={styles.uploadBtnContainer}>
                 <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
@@ -44,15 +45,15 @@ export default function UploadImage() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        elevation: 2,
-        height: 180,
-        width: 180,
-        backgroundColor: '#efefef',
-        position: 'relative',
-        borderRadius: 999,
-        overflow: 'hidden',
-    },
+    // container: {
+    //     elevation: 2,
+    //     height: 180,
+    //     width: 180,
+    //     backgroundColor: '#efefef',
+    //     position: 'relative',
+    //     borderRadius: 999,
+    //     overflow: ,
+    // },
     logo: {
         width: 305,
         height: 159,

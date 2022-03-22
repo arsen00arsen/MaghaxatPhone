@@ -1,10 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, StatusBar, SafeAreaView, FlatList, ImageBackground, ScrollView } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-
-import { LinearGradient } from 'expo-linear-gradient';
 import PostsComponent from '../../components/PostsComponent';
-import HeaderChatSearch from '../../components/HeaderChatSearch';
+import HeaderChatSearch from '../../components/HeaderComponent/HeaderChatSearch';
 
 
 
@@ -75,7 +73,7 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <StatusBar backgroundColor='#009387' barStyle={theme.dark ? "light-content" : "dark-content"} />
       <HeaderChatSearch />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.lastUsersContainerBody}>
           <View style={styles.lastUsersContainer}>
             <View style={styles.lastUsersContainercontent}>
@@ -116,7 +114,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: 15,
-    backgroundColor: 'white',
+    backgroundColor: '#F2F2F2',
     height: "100%"
   },
   lastUsersContainer: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import HeaderBackSearch from '../../components/HeaderBackSearch';
+import HeaderBackSearch from '../../components/HeaderComponent/HeaderBackSearch';
 
 const ChatScreen = () => {
   return (

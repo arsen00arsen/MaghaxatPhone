@@ -4,11 +4,13 @@ import { Avatar, Badge, Icon, withBadge } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { EvilIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 const BadgedIcon = withBadge(2)(Icon);
 
-const HeaderBackSearch = () => {
+const HeaderChatSearch = () => {
     const navigation = useNavigation();
 
+    
     return (
         <View style={styles.container}>
             <LinearGradient
@@ -17,16 +19,15 @@ const HeaderBackSearch = () => {
                 end={{ x: 1, y: 1 }}
                 locations={[0.0, 0.9]}
                 colors={['#D1C7B9', '#D2C8B9']}>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
-                    <Text >{`<`}</Text>
-
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ChatScreen')}>
+                <MaterialCommunityIcons name="message-outline" size={22} color="black" />
                 </TouchableOpacity>
 
             </LinearGradient>
             <Image
                 animation="fadeInUpBig"
                 duraton="1500"
-                source={require('../assets/logoHeader.png')}
+                source={require('../../assets/logoHeader.png')}
                 style={styles.logo}
                 resizeMode="stretch"
             />
@@ -42,7 +43,7 @@ const HeaderBackSearch = () => {
     );
 };
 
-export default HeaderBackSearch;
+export default HeaderChatSearch;
 
 const styles = StyleSheet.create({
     container: {
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: `space-between`,
         width: "100%",
-        minHeight: 80,
+        minHeight: 40,
         marginVertical: 20
     },
     logo: {
@@ -82,6 +83,8 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%"
     }
+
+
 });
 
 

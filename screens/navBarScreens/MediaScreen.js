@@ -1,25 +1,17 @@
 import React from 'react';
-import { View, Text, Image,Button,  StyleSheet, StatusBar, SafeAreaView, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, Button, StyleSheet, StatusBar, SafeAreaView, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import HeaderFilterSearch from '../../components/HeaderFilterSearch';
+import HeaderFilterSearch from '../../components/HeaderComponent/HeaderFilterSearch';
 import { Fontisto, Octicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import MediaContent from "../../components/MediaContent"
+
 
 const MediaScreen = ({ navigation }) => {
   const theme = useTheme();
   const [text, onChangeText] = React.useState("");
   const [image, setImage] = React.useState(null)
-  // const [flexGrid, setflexGrid] = React.useState("flex");
 
-  // const changeContainer = (flexORgrid) => {
-  //   if (flexORgrid == "flex") {
-  //     return (
-  //       setflexGrid("flex")
-  //     )
-  //   } else {
-  //     setflexGrid("grid")
-  //   }
-  // }
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -39,39 +31,39 @@ const MediaScreen = ({ navigation }) => {
     <View style={styles.container}>
       <StatusBar backgroundColor='#009387' barStyle={theme.dark ? "light-content" : "dark-content"} />
       <HeaderFilterSearch />
-
-      <View style={styles.postContainer}>
-        <View style={styles.postBody}>
-          <View style={styles.addPost}>
-            <View style={styles.imgBody}>
-              <Image
-                style={styles.img}
-                source={require("../../assets/FakeImages/Nikol.png")}
-              />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.postContainer}>
+          <View style={styles.postBody}>
+            <View style={styles.addPost}>
+              <View style={styles.imgBody}>
+                <Image
+                  style={styles.img}
+                  source={require("../../assets/FakeImages/Nikol.png")}
+                />
+              </View>
+              <SafeAreaView>
+                <TextInput
+                  style={styles.input}
+                  onChangeText={onChangeText}
+                  value={text}
+                  placeholder={`Type your post message ...`}
+                />
+              </SafeAreaView>
             </View>
-            <SafeAreaView>
-              <TextInput
-                style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
-                placeholder={`Type your post message ...`}
-              />
-            </SafeAreaView>
-          </View>
-          <View style={styles.addImgVedio}>
-            <TouchableOpacity style={styles.postImg} onPress={pickImage}>
-              <Fontisto name="camera" size={24} color="#B9B9B9" />
-              <Text style={styles.textAdd}>Add Photo</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.postVedio}>
-              <Octicons name="device-camera-video" size={24} color="#B9B9B9" />
-              <Text style={styles.textAdd}>Add Vedio</Text>
-            </TouchableOpacity>
-          </View>
+            <View style={styles.addImgVedio}>
+              <TouchableOpacity style={styles.postImg} onPress={pickImage}>
+                <Fontisto name="camera" size={24} color="#B9B9B9" />
+                <Text style={styles.textAdd}>Add Photo</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.postVedio}>
+                <Octicons name="device-camera-video" size={24} color="#B9B9B9" />
+                <Text style={styles.textAdd}>Add Vedio</Text>
+              </TouchableOpacity>
+            </View>
 
-        </View>
-
-        {/* <TouchableOpacity style={styles.flex} onPress={() => changeContainer('flex')}>
+          </View>
+          <MediaContent />
+          {/* <TouchableOpacity style={styles.flex} onPress={() => changeContainer('flex')}>
 
           <Text style={styles.textAdd}>Flex</Text>
         </TouchableOpacity>
@@ -93,11 +85,12 @@ const MediaScreen = ({ navigation }) => {
           <View style={styles.items2}></View>
         </View> */}
 
-        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-      
-          {image && <Image source={{ uri: image }} style={{ width: 160, height: 100 }} />}
+          <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+
+            {image && <Image source={{ uri: image }} style={{ width: 160, height: 100 }} />}
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -166,7 +159,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: 15,
-    backgroundColor: 'white',
+    backgroundColor: '#F2F2F2',
     height: "100%"
   },
   postContainer: {

@@ -4,6 +4,8 @@ import { Avatar, Badge, Icon, withBadge } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import { EvilIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+// import DropdownComponent from './DropDown';
 const BadgedIcon = withBadge(2)(Icon);
 
 const HeaderFilterSearch = () => {
@@ -18,13 +20,14 @@ const HeaderFilterSearch = () => {
                 locations={[0.0, 0.9]}
                 colors={['#D1C7B9', '#D2C8B9']}>
                 <TouchableOpacity style={styles.button} >
-                    <Text >F</Text>
-                </TouchableOpacity>
+                <MaterialCommunityIcons name="filter-menu-outline" size={22} color="black" />
+                </TouchableOpacity> 
+                {/* <DropdownComponent />*/}
             </LinearGradient>
             <Image
                 animation="fadeInUpBig"
                 duraton="1500"
-                source={require('../assets/logoHeader.png')}
+                source={require('../../assets/logoHeader.png')}
                 style={styles.logo}
                 resizeMode="stretch"
             />
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: `space-between`,
         width: "100%",
-        minHeight: 80,
+        minHeight: 40,
         marginVertical: 20
     },
     logo: {

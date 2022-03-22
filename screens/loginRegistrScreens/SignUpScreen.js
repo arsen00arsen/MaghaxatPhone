@@ -19,7 +19,7 @@ const SignUpScreen = ({ navigation }) => {
     });
 
 
-   
+
     const nameInputChange = (val) => {
         if (val.trim().length >= 4) {
 
@@ -81,7 +81,7 @@ const SignUpScreen = ({ navigation }) => {
                     </View>
                     <View></View>
                 </View>
-                <UploadImage />
+                <UploadImage width={180} height={180} />
                 <View>
                     <View style={styles.action}>
                         <Text style={styles.inputHeader}>First Name</Text>
@@ -104,7 +104,7 @@ const SignUpScreen = ({ navigation }) => {
                             onChangeText={(val) => lastNameInputChange(val)}
                         />
                     </View>
-               
+
                 </View>
                 <View>
                     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AccountInfoScreen')}>
@@ -114,7 +114,7 @@ const SignUpScreen = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-            
+
         </LinearGradient>
     );
 };
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom:30
+        marginBottom: 30
     },
     titlecontent: {
         display: "flex",

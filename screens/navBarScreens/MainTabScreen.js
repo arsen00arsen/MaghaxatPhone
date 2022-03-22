@@ -7,15 +7,22 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 
-import HeaderChatSearch from "../../components/HeaderChatSearch"
+// import HeaderChatSearch from "../../components/HeaderChatSearch"
 import HomeScreen from './HomeScreen';
 import MediaScreen from './MediaScreen';
-import ExploreScreen from './ExploreScreen';
-import ProfileScreen from './ProfileScreen';
-import AccountScreen from './AccountScreen';
-const HomeStack = createStackNavigator();
-const DetailsStack = createStackNavigator();
+import BenefactorsScreen from './BenefactorsScreen';
+import AccountsScreen from './AccountsScreen';
+// import AccountScreen from './AccountScreen';
+import MyAccountScreen from "../MyAccountScreens/MyAccountScreen";
+import GeneralScreen from "../MyAccountScreens/GeneralScreen"
+import MyPostsScreen from "../MyAccountScreens/MyPostsScreen"
+import MyMediaScreen from "../MyAccountScreens/MyMediaScreen"
+import MySubscribtionsScreen from "../MyAccountScreens/MySubscribtionsScreen"
+import MySubscribersScreen from "../MyAccountScreens/MySubscribersScreen"
+import SettingsScreen from "../MyAccountScreens/SettingsScreen"
+//  import MyPostsScreen from "../MyAccountScreens/MyPostsScreen"
 
+const AccountStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
@@ -41,15 +48,15 @@ const MainTabScreen = () => (
                 // tabBarLabel: 'Updates',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
-                    <MaterialIcons name="perm-media" size={24}color={color} />
+                    <MaterialIcons name="perm-media" size={24} color={color} />
                 ),
             }}
         />
         <Tab.Screen
-            name="Profile"
-            component={ProfileScreen}
+            name="Benefactors"
+            component={BenefactorsScreen}
             options={{
-                tabBarLabel: 'Profile',
+                tabBarLabel: 'Benefactors',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
                     <FontAwesome5 name="hand-holding" size={24} color={color} />
@@ -57,10 +64,10 @@ const MainTabScreen = () => (
             }}
         />
         <Tab.Screen
-            name="Explore"
-            component={ExploreScreen}
+            name="Accounts"
+            component={AccountsScreen}
             options={{
-                tabBarLabel: 'Explore',
+                tabBarLabel: 'Accounts',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
                     <MaterialCommunityIcons name="account-group" size={24} color={color} />
@@ -68,10 +75,10 @@ const MainTabScreen = () => (
             }}
         />
         <Tab.Screen
-            name="AccountScreen"
-            component={AccountScreen}
+            name="My account"
+            component={MyAccountStackScreen}
             options={{
-                tabBarLabel: 'Account',
+                tabBarLabel: 'My account',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
                     <MaterialCommunityIcons name="account-circle" size={24} color={color} />
@@ -83,32 +90,19 @@ const MainTabScreen = () => (
 
 export default MainTabScreen;
 
-// const HomeStackScreen = ({ navigation }) => (
-//     <HomeStack.Navigator >
-//         <HomeStack.Screen name="Home" component={HomeScreen} options={{
-//             // title:   <HeaderChatSearch />
-            
-//         }} />
-//     </HomeStack.Navigator>
-// );
 
-// const DetailsStackScreen = ({ navigation }) => (
-//     <DetailsStack.Navigator screenOptions={{
-//         headerStyle: {
-//             backgroundColor: '#fff',
-//         },
-//         headerTintColor: '#fff',
-//         headerTitleStyle: {
-//             fontWeight: 'bold'
-//         }
-//     }}>
-//         <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
-//              title: '......................',
-           
-//         }} />
-//     </DetailsStack.Navigator>
-// );
 
-// headerLeft: () => (
-//     <Icon.Button name="ios-menu" size={25} backgroundColor="#009387" onPress={() => navigation.openDrawer()}></Icon.Button>
-//     )
+const MyAccountStackScreen = ({ navigation }) => (
+    <AccountStack.Navigator screenOptions={{
+        headerShown: false
+    }}>
+        <AccountStack.Screen name="MyAccountScreen" component={MyAccountScreen} />
+        <AccountStack.Screen name="GeneralScreen" component={GeneralScreen} />
+        <AccountStack.Screen name="MyPostsScreen" component={MyPostsScreen} />
+        <AccountStack.Screen name="MyMediaScreen" component={MyMediaScreen} />
+        <AccountStack.Screen name="MySubscribtionsScreen" component={MySubscribtionsScreen} />
+        <AccountStack.Screen name="MySubscribersScreen" component={MySubscribersScreen} />
+        <AccountStack.Screen name="SettingsScreen" component={SettingsScreen} />
+    </AccountStack.Navigator>
+);
+
