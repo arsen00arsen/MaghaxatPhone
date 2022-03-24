@@ -9,7 +9,10 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 // import HeaderChatSearch from "../../components/HeaderChatSearch"
 import HomeScreen from './HomeScreen';
-import MediaScreen from './MediaScreen';
+import MediaScreen from '../MediaScreens/MediaScreen';
+import RowVideosScreen from '../MediaScreens/RowVideosScreen';
+import GridVediosScreen from '../MediaScreens/GridVediosScreen';
+
 import BenefactorsScreen from './BenefactorsScreen';
 import AccountsScreen from './AccountsScreen';
 // import AccountScreen from './AccountScreen';
@@ -23,32 +26,33 @@ import SettingsScreen from "../MyAccountScreens/SettingsScreen"
 //  import MyPostsScreen from "../MyAccountScreens/MyPostsScreen"
 
 const AccountStack = createStackNavigator();
+const MediaStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
     <Tab.Navigator
         initialRouteName="Home"
-        activeColor="#fff"
+        activeColor="#A48A66"
+        inactiveColor="#ffffff"
     >
         <Tab.Screen
             name="Home"
             component={HomeScreen}
             options={{
-                // tabBarLabel: 'Home',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="home-outline" size={24} color={color} />
+                    <MaterialCommunityIcons name="home-outline" size={25} color={color} />
                 ),
             }}
         />
         <Tab.Screen
             name="Media"
-            component={MediaScreen}
+            component={MediaPageScreen}
             options={{
                 // tabBarLabel: 'Updates',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
-                    <MaterialIcons name="perm-media" size={24} color={color} />
+                    <MaterialIcons name="perm-media" size={25} color={color} />
                 ),
             }}
         />
@@ -59,7 +63,7 @@ const MainTabScreen = () => (
                 tabBarLabel: 'Benefactors',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
-                    <FontAwesome5 name="hand-holding" size={24} color={color} />
+                    <FontAwesome5 name="hand-holding-usd" size={25} color={color} />
                 ),
             }}
         />
@@ -70,7 +74,7 @@ const MainTabScreen = () => (
                 tabBarLabel: 'Accounts',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="account-group" size={24} color={color} />
+                    <MaterialCommunityIcons name="account-group" size={25} color={color} />
                 ),
             }}
         />
@@ -81,16 +85,26 @@ const MainTabScreen = () => (
                 tabBarLabel: 'My account',
                 tabBarColor: '#C6B7A2',
                 tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="account-circle" size={24} color={color} />
+                    <MaterialCommunityIcons name="account-circle" size={25} color={color} />
                 ),
             }}
         />
     </Tab.Navigator>
 );
-
 export default MainTabScreen;
 
 
+
+
+const MediaPageScreen = ({ navigation }) => (
+    <MediaStack.Navigator screenOptions={{
+        headerShown: false
+    }}>
+        <MediaStack.Screen name="MediaScreen" component={MediaScreen} />
+        <MediaStack.Screen name="RowVideosScreen" component={RowVideosScreen} />
+        <MediaStack.Screen name="GridVediosScreen" component={GridVediosScreen} />
+    </MediaStack.Navigator>
+);
 
 const MyAccountStackScreen = ({ navigation }) => (
     <AccountStack.Navigator screenOptions={{

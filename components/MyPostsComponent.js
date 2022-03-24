@@ -2,27 +2,27 @@ import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import { AntDesign,FontAwesome5,MaterialCommunityIcons } from '@expo/vector-icons';
 
-const PostsComponent = () => {
+const MyPostsComponent = () => {
     return (
         <View style={styles.container}>
             <View style={styles.userInfo}>
                 <Image source={require("../assets/FakeImages/Nikol.png")} style={styles.userspic}>
                 </Image>
                     <Text style={styles.usersname}>Nikol Pashinyan</Text>
+                    <AntDesign name="delete" size={20} color="#F24E1E" style={styles.deleteIcon}/>
             </View>
             <Image source={require("../assets/FakeImages/Nikol.png")} style={styles.mediaVideo}>
             </Image>
             <View style={styles.postIcons}>
-            <AntDesign name="hearto" size={24} color="black" />
-            <FontAwesome5 name="comment" size={24} color="black" />
-            <AntDesign name="sharealt" size={24} color="black" />
-            <MaterialCommunityIcons name="share-outline" size={24} color="black" />
+            <AntDesign name="hearto" size={24} color="#8A8A8A" />
+            <FontAwesome5 name="comment" size={24} color="#8A8A8A" />
+            <MaterialCommunityIcons name="share-outline" size={24} color="#8A8A8A" />
             </View>
         </View>
     );
 };
 
-export default PostsComponent;
+export default MyPostsComponent;
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
@@ -30,11 +30,10 @@ const styles = StyleSheet.create({
         justifyContent: `center`,
         width: "100%",
         height: 292,
-        marginTop: 20,
+        marginVertical: 20,
         borderRadius: 8,
         padding: 8,
-        backgroundColor: "white",
- 
+        backgroundColor: "#ffffff"
     },
     mediaVideo: {
         width: "100%",
@@ -46,7 +45,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: 'center',
-        paddingRight: 17,
         paddingBottom: 17
     },
     userspic: {
@@ -66,6 +64,9 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         alignItems: 'center',
         marginTop: 10
+    },
+    deleteIcon:{
+        marginLeft: "auto"
     }
 
    

@@ -1,20 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, StatusBar, ScrollView, TextInput, TouchableOpacity } from 'react-native';
-import { useTheme } from '@react-navigation/native';
-import HeaderBackSearch from '../../components/HeaderComponent/HeaderBackSearch';
+import FilterHead from '../../components/HeaderComponent/FilterHead';
+import { View, Text, StyleSheet,  ScrollView } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import { AntDesign } from '@expo/vector-icons';
-import MyaccountUsserInfor from '../../components/MyaccountUsserInfor';
-
-
-const GeneralScreen = ({ navigation }) => {
+import { useTheme } from '@react-navigation/native';
+const FilterScreen = () => {
     const theme = useTheme();
     const [data, setData] = React.useState({
-        name: '',
-        lastName: '',
-        date: "",
-        email: "",
-        phone: "",
         ineterstingAreas: "",
         ineterstingArea1: "",
         ineterstingArea2: "",
@@ -24,32 +16,7 @@ const GeneralScreen = ({ navigation }) => {
     });
 
     const inputChange = ({ val, nameInput }) => {
-        if (nameInput == "name") {
-            setData({
-                ...data,
-                name: val,
-            });
-        } else if (nameInput == "lastName") {
-            setData({
-                ...data,
-                lastName: val,
-            });
-        } else if (nameInput == "date") {
-            setData({
-                ...data,
-                date: val,
-            });
-        } else if (nameInput == "email") {
-            setData({
-                ...data,
-                email: val,
-            });
-        } else if (nameInput == "phone") {
-            setData({
-                ...data,
-                phone: val,
-            });
-        } else if (nameInput == "ineterstingArea1") {
+        if (nameInput == "ineterstingArea1") {
             setData({
                 ...data,
                 ineterstingArea1: val,
@@ -82,63 +49,10 @@ const GeneralScreen = ({ navigation }) => {
         }
     }
 
-
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor='#009387' barStyle={theme.dark ? "light-content" : "dark-content"} />
-            <HeaderBackSearch />
+            <FilterHead />
             <ScrollView showsVerticalScrollIndicator={false} style={{ width: "100%" }}>
-                <MyaccountUsserInfor />
-                <View style={styles.action}>
-                    <Text style={styles.inputHeader}>Name</Text>
-                    <TextInput
-                        placeholderTextColor="#666666"
-                        style={styles.textInput}
-                        autoCapitalize="none"
-                        onChangeText={(val) => inputChange({ val, nameInput: "name" })}
-                        placeholder="User Name"
-                    />
-                </View>
-                <View style={styles.action}>
-                    <Text style={styles.inputHeader}>Last Name</Text>
-                    <TextInput
-                        placeholderTextColor="#666666"
-                        style={styles.textInput}
-                        autoCapitalize="none"
-                        onChangeText={(val) => inputChange({ val, nameInput: "lastName" })}
-                        placeholder="User Last Name"
-                    />
-                </View>
-                <View style={styles.action}>
-                    <Text style={styles.inputHeader}>Date</Text>
-                    <TextInput
-                        placeholderTextColor="#666666"
-                        style={styles.textInput}
-                        autoCapitalize="none"
-                        onChangeText={(val) => inputChange({ val, nameInput: "date" })}
-                        placeholder="User Date"
-                    />
-                </View>
-                <View style={styles.action}>
-                    <Text style={styles.inputHeader}>E-mail</Text>
-                    <TextInput
-                        placeholderTextColor="#666666"
-                        style={styles.textInput}
-                        autoCapitalize="none"
-                        onChangeText={(val) => inputChange({ val, nameInput: "email" })}
-                        placeholder="User E-mail"
-                    />
-                </View>
-                <View style={styles.action}>
-                    <Text style={styles.inputHeader}>Phone Number</Text>
-                    <TextInput
-                        placeholderTextColor="#666666"
-                        style={styles.textInput}
-                        autoCapitalize="none"
-                        onChangeText={(val) => inputChange({ val, nameInput: "phone" })}
-                        placeholder="User Phone Number"
-                    />
-                </View>
                 <View style={styles.action}>
                     <Text style={styles.inputHeader}>Interested areas</Text>
                     <RNPickerSelect
@@ -271,27 +185,20 @@ const GeneralScreen = ({ navigation }) => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style={styles.button} onPress={() => console.log('AccounProfiletScreen')}>
-                    <Text style={styles.buttonText}>Save</Text>
-                </TouchableOpacity>
             </ScrollView>
         </View>
     );
 };
-
-export default GeneralScreen;
+export default FilterScreen;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        display: "flex",
-        flexDirection: "column",
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         paddingHorizontal: 15,
         paddingTop: 15,
-        backgroundColor: '#F2F2F2',
-        height: "100%"
+        position: "relative"
     },
     textInput: {
         flex: 1,
@@ -335,13 +242,12 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginVertical: 20
     },
-    buttonText:{
+    buttonText: {
         fontSize: 18,
         fontWeight: "800",
         color: "#FFFFFF"
     }
 });
-
 const pickerSelectStyles = StyleSheet.create({
     inputIOS: {
         fontSize: 16,
@@ -358,4 +264,3 @@ const pickerSelectStyles = StyleSheet.create({
         paddingRight: 30, // to ensure the text is never behind the icon
     },
 });
-

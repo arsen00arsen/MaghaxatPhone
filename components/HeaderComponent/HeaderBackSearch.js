@@ -9,6 +9,7 @@ const BadgedIcon = withBadge(2)(Icon);
 
 const HeaderBackSearch = () => {
     const navigation = useNavigation();
+    
 
     return (
         <View style={styles.container}>

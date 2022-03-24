@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, StatusBar, TouchableOpacity, TextInput } from 'react-native';
+import { View, StyleSheet, Text,  StatusBar, TouchableOpacity, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 import { AntDesign } from '@expo/vector-icons';

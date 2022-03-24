@@ -2,8 +2,9 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, StatusBar, SafeAreaView, FlatList, ImageBackground, ScrollView } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import PostsComponent from '../../components/PostsComponent';
-import HeaderChatSearch from '../../components/HeaderComponent/HeaderChatSearch';
-
+// import HeaderChatSearch from '../../components/HeaderComponent/HeaderChatSearch';
+import { LinearGradient } from 'expo-linear-gradient';
+import HeaderFilterSearch from '../../components/HeaderComponent/HeaderFilterSearch';
 
 
 const HomeScreen = ({ navigation }) => {
@@ -45,8 +46,8 @@ const HomeScreen = ({ navigation }) => {
   const ItemRender = (item) => (
 
     <View style={styles.usersProfile}>
-      <ImageBackground source={require("../../assets/FakeImages/Nikol.png")} resizeMode="cover" style={styles.usersProfileBGimage}>
-      </ImageBackground>
+      <Image source={require("../../assets/FakeImages/Nikol.png")} resizeMode="cover" style={styles.usersProfileBGimage}>
+      </Image>
       <View style={styles.info}>
         <Image
           style={styles.img}
@@ -62,8 +63,7 @@ const HomeScreen = ({ navigation }) => {
       <View
         style={{
           height: 50,
-          width: 5,
-          backgroundColor: "white",
+          width: 10,
         }}
       />
     );
@@ -72,16 +72,21 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#009387' barStyle={theme.dark ? "light-content" : "dark-content"} />
-      <HeaderChatSearch />
+      <HeaderFilterSearch />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.lastUsersContainerBody}>
-          <View style={styles.lastUsersContainer}>
+          <LinearGradient
+            style={styles.lastUsersContainer}
+            start={{ x: 1, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            locations={[0.3, 0.8]}
+            colors={['#E0D0BA', '#E4E3E1']}>
             <View style={styles.lastUsersContainercontent}>
               <View style={styles.lastUsersContainerSmall}></View>
               <Text style={styles.lastUsersContainerText}>Last Signed Users</Text>
             </View>
 
-          </View>
+          </LinearGradient>
           <SafeAreaView style={styles.flatListContainer}>
             <FlatList
               data={ANIMAL_NAMES}
@@ -89,16 +94,24 @@ const HomeScreen = ({ navigation }) => {
               keyExtractor={item => item.id}
               ItemSeparatorComponent={Separator}
               horizontal={true}
+              showsHorizontalScrollIndicator={false}
             />
           </SafeAreaView>
         </View>
-        <View style={styles.lastUsersContainer}>
+        <LinearGradient
+          style={styles.lastUsersContainer}
+          start={{ x: 1, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          locations={[0.3, 0.8]}
+          colors={['#E0D0BA', '#E4E3E1']}>
           <View style={styles.lastUsersContainercontent}>
             <View style={styles.lastUsersContainerSmall}></View>
             <Text style={styles.lastUsersContainerText}>Popular Posts</Text>
           </View>
-        </View>
-          <PostsComponent />
+        </LinearGradient>
+        <PostsComponent />
+        <PostsComponent />
+        <PostsComponent />
       </ScrollView>
     </View>
   );
@@ -113,7 +126,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: 'center',
     justifyContent: 'flex-start',
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingTop: 15,
     backgroundColor: '#F2F2F2',
     height: "100%"
   },
@@ -123,7 +137,6 @@ const styles = StyleSheet.create({
     height: 57,
     borderRadius: 8,
     position: "relative",
-    backgroundColor: "#88673A",
     justifyContent: "center"
   },
   lastUsersContainerSmall: {
@@ -150,7 +163,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 12
   },
-
   usersProfile: {
     width: 80,
     height: 170,
@@ -159,12 +171,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 8,
   },
-
   itemText: {
     fontSize: 8,
     width: 48,
     color: '#464646',
-
   },
   flatListContainer: {
     paddingVertical: 15
@@ -178,6 +188,8 @@ const styles = StyleSheet.create({
   usersProfileBGimage: {
     flex: 1,
     width: "100%",
+    borderTopRightRadius: 5,
+    borderTopLeftRadius: 5,
   },
   info: {
     height: 30,
@@ -189,7 +201,4 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 5,
     borderBottomLeftRadius: 5,
   }
-
-
-
 });

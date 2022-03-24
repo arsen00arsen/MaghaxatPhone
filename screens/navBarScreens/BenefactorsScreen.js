@@ -64,7 +64,6 @@ const BenefactorsScreen = () => {
     )
   })
 
-
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#009387' barStyle={theme.dark ? "light-content" : "dark-content"} />
@@ -88,7 +87,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: 'center',
     justifyContent: 'flex-start',
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingTop: 15,
     backgroundColor: '#F2F2F2',
     height: "100%"
   },

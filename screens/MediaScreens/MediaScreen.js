@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, Button, StyleSheet, StatusBar, SafeAreaView, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import HeaderFilterSearch from '../../components/HeaderComponent/HeaderFilterSearch';
+import HeaderBackSearch from '../../components/HeaderComponent/HeaderBackSearch';
 import { Fontisto, Octicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import MediaContent from "../../components/MediaContent"
@@ -30,7 +30,7 @@ const MediaScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor='#009387' barStyle={theme.dark ? "light-content" : "dark-content"} />
-      <HeaderFilterSearch />
+      <HeaderBackSearch />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.postContainer}>
           <View style={styles.postBody}>
@@ -60,33 +60,9 @@ const MediaScreen = ({ navigation }) => {
                 <Text style={styles.textAdd}>Add Vedio</Text>
               </TouchableOpacity>
             </View>
-
           </View>
           <MediaContent />
-          {/* <TouchableOpacity style={styles.flex} onPress={() => changeContainer('flex')}>
-
-          <Text style={styles.textAdd}>Flex</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.flex} onPress={() => changeContainer('grid')}>
-
-          <Text style={styles.textAdd}>Grid</Text>
-        </TouchableOpacity>
-        <View style={styles.section}>
-          <View style={styles.items1}>
-            <View style={(flexGrid === "grid") ? styles.itemsss : styles.itemsssFlex}>
-              <View style={(flexGrid === "grid") ? styles.items : styles.itemsFlex}></View>
-              <View style={(flexGrid === "grid") ? styles.items : styles.itemsFlex}></View>
-            </View>
-            <View style={(flexGrid === "grid") ? styles.itemsss : styles.itemsssFlex}>
-              <View style={(flexGrid === "grid") ? styles.items : styles.itemsFlex}></View>
-              <View style={(flexGrid === "grid") ? styles.items : styles.itemsFlex}></View>
-            </View>
-          </View>
-          <View style={styles.items2}></View>
-        </View> */}
-
           <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-
             {image && <Image source={{ uri: image }} style={{ width: 160, height: 100 }} />}
           </View>
         </View>
@@ -98,67 +74,14 @@ const MediaScreen = ({ navigation }) => {
 export default MediaScreen;
 
 const styles = StyleSheet.create({
-
-  // section: {
-  //   display: "flex",
-  //   flexDirection: "column"
-  // },
-
-  // items: {
-  //   width: "49%",
-  //   height: 40,
-  //   backgroundColor: "red"
-  // },
-  // itemsFlex: {
-  //   width: "100%",
-  //   height: 40,
-  //   backgroundColor: "red",
-  //   marginBottom: 20
-  // }
-
-  // ,
-  // items1: {
-  //   display: "flex",
-  //   flexDirection: "column"
-  // },
-  // items2: {
-  //   width: "100%",
-  //   height: 40,
-  //   backgroundColor: "green"
-  // },
-
-  // itemsss: {
-  //   display: "flex",
-  //   flexDirection: "row",
-  //   justifyContent: "space-between",
-  //   marginBottom: 20,
-  //   marginTop: 20
-  // },
-  // itemsssFlex: {
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   justifyContent: "space-between",
-  //   marginBottom: 20,
-  //   marginTop: 20
-  // },
-  // flex: {
-  //   width: 40,
-  //   height: 40,
-  //   margin: 20
-  // },
-
-
-
-
-
-
   container: {
     flex: 1,
     display: "flex",
     flexDirection: "column",
     alignItems: 'center',
     justifyContent: 'flex-start',
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingTop: 15,
     backgroundColor: '#F2F2F2',
     height: "100%"
   },

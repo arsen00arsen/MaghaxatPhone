@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity, ScrollView } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import HeaderChatSearch from '../../components/HeaderComponent/HeaderChatSearch';
+import HeaderBackSearch from '../../components/HeaderComponent/HeaderBackSearch';
 import UploadImage from '../../components/UploadImage';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -13,7 +13,7 @@ const MyAccountScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor='#009387' barStyle={theme.dark ? "light-content" : "dark-content"} />
-            <HeaderChatSearch />
+            <HeaderBackSearch />
             <ScrollView showsVerticalScrollIndicator={false} style={{ width: "100%" }}>
                 <View style={styles.user}>
                     <View style={styles.userImage}>
@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: 15,
+        paddingHorizontal: 15,
+        paddingTop: 15,
         backgroundColor: '#F2F2F2',
         height: "100%"
     },

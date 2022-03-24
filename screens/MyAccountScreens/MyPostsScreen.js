@@ -1,8 +1,10 @@
 
 import React from 'react';
-import { View, Text, StyleSheet, StatusBar,ScrollView } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, ScrollView } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import HeaderBackSearch from '../../components/HeaderComponent/HeaderBackSearch';
+import MyPostsComponent from '../../components/MyPostsComponent';
+import MyaccountUsserInfor from '../../components/MyaccountUsserInfor';
 
 
 
@@ -15,7 +17,8 @@ const MyPostsScreen = ({ navigation }) => {
             <StatusBar backgroundColor='#009387' barStyle={theme.dark ? "light-content" : "dark-content"} />
             <HeaderBackSearch />
             <ScrollView showsVerticalScrollIndicator={false} style={{ width: "100%" }}>
-                <Text>MyPostsScreen"</Text>
+                <MyaccountUsserInfor />
+                <MyPostsComponent />
             </ScrollView>
         </View>
     );
@@ -30,11 +33,12 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: 15,
+        paddingHorizontal: 15,
+        paddingTop: 15,
         backgroundColor: '#F2F2F2',
         height: "100%"
     },
-    
+
 
 
 });

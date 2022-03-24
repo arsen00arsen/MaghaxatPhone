@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { View, Text, Image, Button, StyleSheet, StatusBar, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, StatusBar, TouchableOpacity, ScrollView } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import HeaderFilterSearch from '../../components/HeaderComponent/HeaderFilterSearch';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: 'center',
     justifyContent: 'flex-start',
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingTop: 15,
     backgroundColor: '#F2F2F2',
     height: "100%"
   },

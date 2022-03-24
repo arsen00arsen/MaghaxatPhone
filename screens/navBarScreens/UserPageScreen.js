@@ -136,7 +136,8 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: 'center',
         justifyContent: 'flex-start',
-        padding: 15,
+        paddingHorizontal: 15,
+        paddingTop: 15,
         backgroundColor: '#F2F2F2',
         height: "100%"
     },

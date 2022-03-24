@@ -16,8 +16,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import ChatScreen from './screens/navBarScreens/ChatScreen';
 import UserPageScreen from './screens/navBarScreens/UserPageScreen';
 import AccounProfiletScreen from './screens/navBarScreens/AccounProfiletScreen';
-
-
+import FilterScreen from './screens/navBarScreens/FilterScreen';
+import FilterResultScreen from './screens/navBarScreens/FilterResultScreen'
 const Drawer = createDrawerNavigator();
 const App = () => {
 
@@ -25,14 +25,15 @@ const App = () => {
     <NavigationContainer >
       {/* <RootStackScreen/> */}
       <Drawer.Navigator screenOptions={{
-      headerShown: false
-    }}>
+        headerShown: false
+      }}>
         <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
         <Drawer.Screen name="ChatScreen" component={ChatScreen} />
+        <Drawer.Screen name="FilterScreen" component={FilterScreen} />
+        <Drawer.Screen name="FilterResultScreen" component={FilterResultScreen} />
         <Drawer.Screen name="UserPageScreen" component={UserPageScreen} />
         <Drawer.Screen name="AccounProfiletScreen" component={AccounProfiletScreen} />
       </Drawer.Navigator>
-
     </NavigationContainer>
   );
 }
